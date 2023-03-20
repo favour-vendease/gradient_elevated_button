@@ -434,7 +434,7 @@ class _ButtonStyleState extends State<ButtonStyleButton>
       child: Material(
         elevation: resolvedElevation!,
         textStyle: resolvedTextStyle?.copyWith(color: resolvedForegroundColor),
-        shape: resolvedShape!.copyWith(side: side),
+        shape: resolvedShape.copyWith(side: side),
         color: Colors.transparent,
         shadowColor: resolvedShadowColor,
         surfaceTintColor: resolvedSurfaceTintColor,
