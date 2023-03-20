@@ -10,9 +10,34 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Gradient Elevated Button',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+          colorScheme: const ColorScheme.light(
+              primary: Color.fromARGB(255, 166, 206, 57),
+              secondary: Color.fromARGB(255, 0, 175, 173)
+          ),
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: GradientElevatedButton.styleFrom(
+            gradient: const LinearGradient(
+              colors: [
+                Color.fromARGB(255, 227, 17, 60),
+                Color.fromARGB(255, 0, 175, 173),
+              ],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+            ),
+            foregroundColor: Colors.red,
+              side: const BorderSide(
+              ),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+          )
+        )
       ),
       home: const MyHomePage(),
     );
@@ -20,13 +45,14 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, });
+  const MyHomePage({
+    super.key,
+  });
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,21 +60,42 @@ class _MyHomePageState extends State<MyHomePage> {
         title: const Text('Gradient Elevated Button'),
       ),
       body: Center(
-        child: GradientElevatedButton(
-          onPressed: () {
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            GradientElevatedButton(
+              onPressed: () {
 
-          },
-          style: GradientElevatedButton.styleFrom(
-            gradient: const LinearGradient(colors: [
-              Color.fromARGB(255, 166, 206, 57),
-              Color.fromARGB(255, 0, 175, 173),
-            ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
+                // 255, 166, 206, 57
+              },
+              style: GradientElevatedButton.styleFrom(
+                gradient: const LinearGradient(
+                  colors: [
+                    Colors.red,
+                    Colors.green,
+                  ],
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                ),
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50),
+                ),
+                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+              ),
+              child: const Text("This is Gradient Elevated Button style from UI"),
             ),
-          ),
-          child: const Text("This is Gradient Elevated Button"),
+            const SizedBox(
+              height: 50,
+            ),
+            GradientElevatedButton(
+              onPressed: () {},
+              child: const Text("This is Gradient Elevated Button From Theme"),
+            ),
+
+          ],
         ),
+
       ),
     );
   }

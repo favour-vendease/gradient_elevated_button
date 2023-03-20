@@ -7,8 +7,6 @@ import 'package:flutter/material.dart';
 import 'button_style.dart';
 import 'button_style_button.dart' as style;
 
-
-
 class GradientElevatedButton extends style.ButtonStyleButton {
   /// Create an ElevatedButton.
   ///
@@ -124,43 +122,38 @@ class GradientElevatedButton extends style.ButtonStyleButton {
     bool? enableFeedback,
     AlignmentGeometry? alignment,
     InteractiveInkFeatureFactory? splashFactory,
-    @Deprecated(
-        'Use backgroundColor instead. '
-            'This feature was deprecated after v3.1.0.'
-    )
-    Color? primary,
-    @Deprecated(
-        'Use foregroundColor instead. '
-            'This feature was deprecated after v3.1.0.'
-    )
-    Color? onPrimary,
+    @Deprecated('Use backgroundColor instead. '
+        'This feature was deprecated after v3.1.0.')
+        Color? primary,
+    @Deprecated('Use foregroundColor instead. '
+        'This feature was deprecated after v3.1.0.')
+        Color? onPrimary,
     @Deprecated(
         'Use disabledForegroundColor and disabledBackgroundColor instead. '
-            'This feature was deprecated after v3.1.0.'
-    )
-    Color? onSurface,
+        'This feature was deprecated after v3.1.0.')
+        Color? onSurface,
   }) {
-   /* final Color? background = backgroundColor ?? primary;
+    /* final Color? background = backgroundColor ?? primary;
     final Color? disabledBackground = disabledBackgroundColor ?? onSurface?.withOpacity(0.12);
     final MaterialStateProperty<Color?>? backgroundColorProp = (background == null && disabledBackground == null)
         ? null
         : _ElevatedButtonDefaultColor(background, disabledBackground);*/
     final Color? foreground = foregroundColor ?? onPrimary;
-    final Color? disabledForeground = disabledForegroundColor ?? onSurface?.withOpacity(0.38);
-    final MaterialStateProperty<Color?>? foregroundColorProp = (foreground == null && disabledForeground == null)
-        ? null
-        : _ElevatedButtonDefaultColor(foreground, disabledForeground);
-    final MaterialStateProperty<Color?>? overlayColor = (foreground == null)
-        ? null
-        : _ElevatedButtonDefaultOverlay(foreground);
-    final MaterialStateProperty<double>? elevationValue = (elevation == null)
-        ? null
-        : _ElevatedButtonDefaultElevation(elevation);
-    final MaterialStateProperty<MouseCursor?>? mouseCursor = (enabledMouseCursor == null && disabledMouseCursor == null)
-        ? null
-        : _ElevatedButtonDefaultMouseCursor(enabledMouseCursor, disabledMouseCursor);
-
-
+    final Color? disabledForeground =
+        disabledForegroundColor ?? onSurface?.withOpacity(0.38);
+    final MaterialStateProperty<Color?>? foregroundColorProp =
+        (foreground == null && disabledForeground == null)
+            ? null
+            : _ElevatedButtonDefaultColor(foreground, disabledForeground);
+    final MaterialStateProperty<Color?>? overlayColor =
+        (foreground == null) ? null : _ElevatedButtonDefaultOverlay(foreground);
+    final MaterialStateProperty<double>? elevationValue =
+        (elevation == null) ? null : _ElevatedButtonDefaultElevation(elevation);
+    final MaterialStateProperty<MouseCursor?>? mouseCursor =
+        (enabledMouseCursor == null && disabledMouseCursor == null)
+            ? null
+            : _ElevatedButtonDefaultMouseCursor(
+                enabledMouseCursor, disabledMouseCursor);
 
     return GradientButtonStyle(
       gradient: gradient,
@@ -310,25 +303,26 @@ class GradientElevatedButton extends style.ButtonStyleButton {
     return Theme.of(context).useMaterial3
         ? _ElevatedButtonDefaultsM3(context)
         : styleFrom(
-      foregroundColor: colorScheme.onPrimary,
-      disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
-      disabledForegroundColor: colorScheme.onSurface.withOpacity(0.38),
-      shadowColor: theme.shadowColor,
-      elevation: 2,
-      textStyle: theme.textTheme.labelLarge,
-      padding: _scaledPadding(context),
-      minimumSize: const Size(64, 36),
-      maximumSize: Size.infinite,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4))),
-      enabledMouseCursor: SystemMouseCursors.click,
-      disabledMouseCursor: SystemMouseCursors.basic,
-      visualDensity: theme.visualDensity,
-      tapTargetSize: theme.materialTapTargetSize,
-      animationDuration: kThemeChangeDuration,
-      enableFeedback: true,
-      alignment: Alignment.center,
-      splashFactory: InkRipple.splashFactory,
-    );
+            foregroundColor: colorScheme.onPrimary,
+            disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+            disabledForegroundColor: colorScheme.onSurface.withOpacity(0.38),
+            shadowColor: theme.shadowColor,
+            elevation: 2,
+            textStyle: theme.textTheme.labelLarge,
+            padding: _scaledPadding(context),
+            minimumSize: const Size(64, 36),
+            maximumSize: Size.infinite,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(4))),
+            enabledMouseCursor: SystemMouseCursors.click,
+            disabledMouseCursor: SystemMouseCursors.basic,
+            visualDensity: theme.visualDensity,
+            tapTargetSize: theme.materialTapTargetSize,
+            animationDuration: kThemeChangeDuration,
+            enableFeedback: true,
+            alignment: Alignment.center,
+            splashFactory: InkRipple.splashFactory,
+          );
   }
 
   /// Returns the [ElevatedButtonThemeData.style] of the closest
@@ -349,7 +343,8 @@ EdgeInsetsGeometry _scaledPadding(BuildContext context) {
 }
 
 @immutable
-class _ElevatedButtonDefaultColor extends MaterialStateProperty<Color?> with Diagnosticable {
+class _ElevatedButtonDefaultColor extends MaterialStateProperty<Color?>
+    with Diagnosticable {
   _ElevatedButtonDefaultColor(this.color, this.disabled);
 
   final Color? color;
@@ -365,7 +360,8 @@ class _ElevatedButtonDefaultColor extends MaterialStateProperty<Color?> with Dia
 }
 
 @immutable
-class _ElevatedButtonDefaultOverlay extends MaterialStateProperty<Color?> with Diagnosticable {
+class _ElevatedButtonDefaultOverlay extends MaterialStateProperty<Color?>
+    with Diagnosticable {
   _ElevatedButtonDefaultOverlay(this.overlay);
 
   final Color overlay;
@@ -375,7 +371,8 @@ class _ElevatedButtonDefaultOverlay extends MaterialStateProperty<Color?> with D
     if (states.contains(MaterialState.hovered)) {
       return overlay.withOpacity(0.08);
     }
-    if (states.contains(MaterialState.focused) || states.contains(MaterialState.pressed)) {
+    if (states.contains(MaterialState.focused) ||
+        states.contains(MaterialState.pressed)) {
       return overlay.withOpacity(0.24);
     }
     return null;
@@ -383,7 +380,8 @@ class _ElevatedButtonDefaultOverlay extends MaterialStateProperty<Color?> with D
 }
 
 @immutable
-class _ElevatedButtonDefaultElevation extends MaterialStateProperty<double> with Diagnosticable {
+class _ElevatedButtonDefaultElevation extends MaterialStateProperty<double>
+    with Diagnosticable {
   _ElevatedButtonDefaultElevation(this.elevation);
 
   final double elevation;
@@ -407,7 +405,8 @@ class _ElevatedButtonDefaultElevation extends MaterialStateProperty<double> with
 }
 
 @immutable
-class _ElevatedButtonDefaultMouseCursor extends MaterialStateProperty<MouseCursor?> with Diagnosticable {
+class _ElevatedButtonDefaultMouseCursor
+    extends MaterialStateProperty<MouseCursor?> with Diagnosticable {
   _ElevatedButtonDefaultMouseCursor(this.enabledCursor, this.disabledCursor);
 
   final MouseCursor? enabledCursor;
@@ -437,10 +436,10 @@ class _ElevatedButtonWithIcon extends GradientElevatedButton {
     required Widget icon,
     required Widget label,
   }) : super(
-        autofocus: autofocus ?? false,
-        clipBehavior: clipBehavior ?? Clip.none,
-        child: _ElevatedButtonWithIconChild(icon: icon, label: label),
-      );
+          autofocus: autofocus ?? false,
+          clipBehavior: clipBehavior ?? Clip.none,
+          child: _ElevatedButtonWithIconChild(icon: icon, label: label),
+        );
 
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
@@ -451,13 +450,13 @@ class _ElevatedButtonWithIcon extends GradientElevatedButton {
       MediaQuery.maybeOf(context)?.textScaleFactor ?? 1,
     );
     return super.defaultStyleOf(context).copyWith(
-      padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
-    );
+          padding: MaterialStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
+        );
   }
 }
 
 class _ElevatedButtonWithIconChild extends StatelessWidget {
-  const _ElevatedButtonWithIconChild({ required this.label, required this.icon });
+  const _ElevatedButtonWithIconChild({required this.label, required this.icon});
 
   final Widget label;
   final Widget icon;
@@ -467,7 +466,8 @@ class _ElevatedButtonWithIconChild extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double scale = MediaQuery.maybeOf(context)?.textScaleFactor ?? 1;
-    final double gap = scale <= 1 ? 8 : lerpDouble(8, 4, math.min(scale - 1, 1))!;
+    final double gap =
+        scale <= 1 ? 8 : lerpDouble(8, 4, math.min(scale - 1, 1))!;
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[icon, SizedBox(width: gap), Flexible(child: label)],
@@ -487,17 +487,18 @@ class _ElevatedButtonWithIconChild extends StatelessWidget {
 class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   _ElevatedButtonDefaultsM3(this.context)
       : super(
-    animationDuration: kThemeChangeDuration,
-    enableFeedback: true,
-    alignment: Alignment.center,
-  );
+          animationDuration: kThemeChangeDuration,
+          enableFeedback: true,
+          alignment: Alignment.center,
+        );
 
   final BuildContext context;
   late final ColorScheme _colors = Theme.of(context).colorScheme;
 
   @override
   MaterialStateProperty<TextStyle?> get textStyle =>
-      MaterialStatePropertyAll<TextStyle?>(Theme.of(context).textTheme.labelLarge);
+      MaterialStatePropertyAll<TextStyle?>(
+          Theme.of(context).textTheme.labelLarge);
 
   @override
   MaterialStateProperty<Color?>? get backgroundColor =>
@@ -591,8 +592,10 @@ class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   VisualDensity? get visualDensity => Theme.of(context).visualDensity;
 
   @override
-  MaterialTapTargetSize? get tapTargetSize => Theme.of(context).materialTapTargetSize;
+  MaterialTapTargetSize? get tapTargetSize =>
+      Theme.of(context).materialTapTargetSize;
 
   @override
-  InteractiveInkFeatureFactory? get splashFactory => Theme.of(context).splashFactory;
+  InteractiveInkFeatureFactory? get splashFactory =>
+      Theme.of(context).splashFactory;
 }

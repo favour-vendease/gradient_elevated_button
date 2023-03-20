@@ -171,8 +171,6 @@ abstract class ButtonStyleButton extends StatefulWidget {
     EdgeInsetsGeometry geometry3x,
     double textScaleFactor,
   ) {
-
-
     if (textScaleFactor <= 1) {
       return geometry1x;
     } else if (textScaleFactor >= 3) {
@@ -265,42 +263,44 @@ class _ButtonStyleState extends State<ButtonStyleButton>
           begin: Alignment.topCenter,
           end: Alignment.bottomCenter,
         ));
-    final GradientButtonStyle defaultStyle =
-        GradientButtonStyle.copyWith(style: widget.defaultStyleOf(context),
-            gradient: LinearGradient(
-              colors: [
-                Theme.of(context).colorScheme.primary,
-                Theme.of(context).colorScheme.secondary,
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            )
-        );
+    final GradientButtonStyle defaultStyle = GradientButtonStyle.copyWith(
+        style: widget.defaultStyleOf(context),
+        gradient: LinearGradient(
+          colors: [
+            Theme.of(context).colorScheme.primary,
+            Theme.of(context).colorScheme.secondary,
+          ],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        ));
 
     T? effectiveValue<T>(T? Function(GradientButtonStyle? style) getProperty) {
       final T? widgetValue = getProperty(widgetStyle);
       final T? themeValue = getProperty(themeStyle);
+
       final T? defaultValue = getProperty(defaultStyle);
       return widgetValue ?? themeValue ?? defaultValue;
     }
 
     T? resolve<T>(
-        MaterialStateProperty<T>? Function(GradientButtonStyle? style) getProperty) {
+        MaterialStateProperty<T>? Function(GradientButtonStyle? style)
+            getProperty) {
       return effectiveValue(
         (GradientButtonStyle? style) {
           return getProperty(style)?.resolve(statesController.value);
         },
       );
     }
-
+    Gradient? resolvedGradient = resolve<Gradient?>(
+            (GradientButtonStyle? style) =>
+            MaterialStateProperty.resolveWith((Set<MaterialState> states) {
+              return style?.gradient;
+            }));
     final double? resolvedElevation =
         resolve<double?>((ButtonStyle? style) => style?.elevation);
     final TextStyle? resolvedTextStyle =
         resolve<TextStyle?>((ButtonStyle? style) => style?.textStyle);
-    Gradient? resolvedGradient =
-    resolve<Gradient?>((GradientButtonStyle? style) => MaterialStateProperty.resolveWith((Set<MaterialState> states) {
-      return style?.gradient;
-    }));
+
 
     Color? resolvedBackgroundColor =
         resolve<Color?>((ButtonStyle? style) => style?.backgroundColor);
@@ -418,16 +418,19 @@ class _ButtonStyleState extends State<ButtonStyleButton>
     }
     elevation = resolvedElevation;
     backgroundColor = resolvedBackgroundColor;
-
-    final Widget result = Container(
-       decoration: BoxDecoration(
-          gradient:resolvedGradient
-       ),
+    BorderSide side=BorderSide(
+      color: resolvedSide?.color==const Color(0xff000000)?Colors.transparent:resolvedSide?.color??Colors.transparent,
+      style: resolvedSide?.style??BorderStyle.solid,
+      strokeAlign: resolvedSide?.strokeAlign??-1.0,
+      width: resolvedSide?.width??1.0,
+    );
+    final Widget result = ConstrainedBox(
+      //decoration: BoxDecoration(gradient: resolvedGradient),
       constraints: effectiveConstraints,
       child: Material(
         elevation: resolvedElevation!,
         textStyle: resolvedTextStyle?.copyWith(color: resolvedForegroundColor),
-        shape: resolvedShape!.copyWith(side: resolvedSide),
+        shape: resolvedShape!.copyWith(side: side),
         color: Colors.transparent,
         shadowColor: resolvedShadowColor,
         surfaceTintColor: resolvedSurfaceTintColor,
@@ -447,21 +450,33 @@ class _ButtonStyleState extends State<ButtonStyleButton>
           splashFactory: resolvedSplashFactory,
           overlayColor: overlayColor,
           highlightColor: Colors.transparent,
-          customBorder: resolvedShape.copyWith(side: resolvedSide),
+          customBorder: resolvedShape.copyWith(side: side),
           statesController: statesController,
-          child: IconTheme.merge(
-            data: IconThemeData(
-                color: resolvedIconColor ?? resolvedForegroundColor,
-                size: resolvedIconSize),
-            child: Padding(
-              padding: padding,
-              child: Align(
-                alignment: resolvedAlignment!,
-                widthFactor: 1.0,
-                heightFactor: 1.0,
-                child: widget.child,
-              ),
-            ),
+          child: Builder(
+            builder: (context) {
+              resolvedShape;
+              return Container(
+                decoration: BoxDecoration(
+                  gradient: resolvedGradient,
+                  borderRadius: (resolvedShape as RoundedRectangleBorder).borderRadius,
+                  border: Border.fromBorderSide(side)
+                ),
+                child: IconTheme.merge(
+                  data: IconThemeData(
+                      color: resolvedIconColor ?? resolvedForegroundColor,
+                      size: resolvedIconSize),
+                  child: Padding(
+                    padding: padding,
+                    child: Align(
+                      alignment: resolvedAlignment!,
+                      widthFactor: 1.0,
+                      heightFactor: 1.0,
+                      child: widget.child,
+                    ),
+                  ),
+                ),
+              );
+            }
           ),
         ),
       ),
