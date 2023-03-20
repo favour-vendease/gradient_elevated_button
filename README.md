@@ -14,7 +14,7 @@ A GradientElevatedButton is a custom button widget that provides a visually appe
 To use GradientElevatedButton, add it to your dependencies in `pubspec.yaml`:
 ```dart
 dependencies :
-  gradient_elevated_button : ^0.0.4
+  gradient_elevated_button : ^0.0.5
 ```
 
 ## Usage

@@ -424,8 +424,12 @@ class _ButtonStyleState extends State<ButtonStyleButton>
       strokeAlign: resolvedSide?.strokeAlign??-1.0,
       width: resolvedSide?.width??1.0,
     );
-    final Widget result = ConstrainedBox(
-      //decoration: BoxDecoration(gradient: resolvedGradient),
+    final Widget result = Container(
+      decoration: BoxDecoration(
+          gradient: resolvedGradient,
+          borderRadius: (resolvedShape as RoundedRectangleBorder).borderRadius,
+          border: Border.fromBorderSide(side)
+      ),
       constraints: effectiveConstraints,
       child: Material(
         elevation: resolvedElevation!,
@@ -454,25 +458,17 @@ class _ButtonStyleState extends State<ButtonStyleButton>
           statesController: statesController,
           child: Builder(
             builder: (context) {
-              resolvedShape;
-              return Container(
-                decoration: BoxDecoration(
-                  gradient: resolvedGradient,
-                  borderRadius: (resolvedShape as RoundedRectangleBorder).borderRadius,
-                  border: Border.fromBorderSide(side)
-                ),
-                child: IconTheme.merge(
-                  data: IconThemeData(
-                      color: resolvedIconColor ?? resolvedForegroundColor,
-                      size: resolvedIconSize),
-                  child: Padding(
-                    padding: padding,
-                    child: Align(
-                      alignment: resolvedAlignment!,
-                      widthFactor: 1.0,
-                      heightFactor: 1.0,
-                      child: widget.child,
-                    ),
+              return IconTheme.merge(
+                data: IconThemeData(
+                    color: resolvedIconColor ?? resolvedForegroundColor,
+                    size: resolvedIconSize),
+                child: Padding(
+                  padding: padding,
+                  child: Align(
+                    alignment: resolvedAlignment!,
+                    widthFactor: 1.0,
+                    heightFactor: 1.0,
+                    child: widget.child,
                   ),
                 ),
               );

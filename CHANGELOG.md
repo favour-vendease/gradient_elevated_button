@@ -1,3 +1,7 @@
+## 0.0.5
+
+* When Button Click Splash issue solved
+
 ## 0.0.4
 
 * Customise Button From Theme
