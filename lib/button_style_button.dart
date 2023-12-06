@@ -8,6 +8,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gradient_elevated_button/button_style.dart';
+import 'package:gradient_elevated_button/inherited/gradient_elevated_theme_data.dart';
 
 /// The base [StatefulWidget] class for buttons whose style is defined by a [ButtonStyle] object.
 ///
@@ -253,6 +254,8 @@ class _ButtonStyleState extends State<ButtonStyleButton>
   @override
   Widget build(BuildContext context) {
     final GradientButtonStyle? widgetStyle = widget.style;
+    final GradientButtonStyle? primaryTheme =
+        GradientButtonThemeData.of(context);
     final GradientButtonStyle themeStyle = GradientButtonStyle.copyWith(
         style: widget.themeStyleOf(context),
         gradient: LinearGradient(
@@ -276,10 +279,11 @@ class _ButtonStyleState extends State<ButtonStyleButton>
 
     T? effectiveValue<T>(T? Function(GradientButtonStyle? style) getProperty) {
       final T? widgetValue = getProperty(widgetStyle);
+      final T? primaryThemeValue = getProperty(primaryTheme);
       final T? themeValue = getProperty(themeStyle);
 
       final T? defaultValue = getProperty(defaultStyle);
-      return widgetValue ?? themeValue ?? defaultValue;
+      return widgetValue ?? primaryThemeValue ?? themeValue ?? defaultValue;
     }
 
     T? resolve<T>(
@@ -427,10 +431,10 @@ class _ButtonStyleState extends State<ButtonStyleButton>
       width: resolvedSide?.width ?? 1.0,
     );
     final Widget result = Container(
-      decoration: BoxDecoration(
-          gradient: resolvedGradient,
-          borderRadius: (resolvedShape as RoundedRectangleBorder).borderRadius,
-          border: Border.fromBorderSide(side)),
+      decoration: ShapeDecoration(
+        gradient: resolvedGradient,
+        shape: resolvedShape!.copyWith(side: side),
+      ),
       constraints: effectiveConstraints,
       child: Material(
         elevation: resolvedElevation!,

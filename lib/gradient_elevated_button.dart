@@ -9,8 +9,6 @@ import 'button_style_button.dart' as style;
 
 class GradientElevatedButton extends style.ButtonStyleButton {
   /// Create an ElevatedButton.
-  ///
-  /// The [autofocus] and [clipBehavior] arguments must not be null.
   const GradientElevatedButton({
     super.key,
     required super.onPressed,
@@ -30,8 +28,6 @@ class GradientElevatedButton extends style.ButtonStyleButton {
   ///
   /// The icon and label are arranged in a row and padded by 12 logical pixels
   /// at the start, and 16 at the end, with an 8 pixel gap in between.
-  ///
-  /// The [icon] and [label] arguments must not be null.
   factory GradientElevatedButton.icon({
     Key? key,
     required VoidCallback? onPressed,
@@ -133,11 +129,6 @@ class GradientElevatedButton extends style.ButtonStyleButton {
         'This feature was deprecated after v3.1.0.')
     Color? onSurface,
   }) {
-    /* final Color? background = backgroundColor ?? primary;
-    final Color? disabledBackground = disabledBackgroundColor ?? onSurface?.withOpacity(0.12);
-    final MaterialStateProperty<Color?>? backgroundColorProp = (background == null && disabledBackground == null)
-        ? null
-        : _ElevatedButtonDefaultColor(background, disabledBackground);*/
     final Color? foreground = foregroundColor ?? onPrimary;
     final Color? disabledForeground =
         disabledForegroundColor ?? onSurface?.withOpacity(0.38);

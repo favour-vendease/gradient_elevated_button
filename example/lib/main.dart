@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_elevated_button/gradient_elevated_button.dart';
+import 'package:gradient_elevated_button/inherited/gradient_elevated_theme_data.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,32 +10,42 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Gradient Elevated Button',
-      theme: ThemeData(
-          primarySwatch: Colors.blue,
-          colorScheme: const ColorScheme.light(
-              primary: Color.fromARGB(255, 166, 206, 57),
-              secondary: Color.fromARGB(255, 0, 175, 173)),
-          elevatedButtonTheme: ElevatedButtonThemeData(
-              style: GradientElevatedButton.styleFrom(
-            gradient: const LinearGradient(
-              colors: [
-                Color.fromARGB(255, 227, 17, 60),
-                Color.fromARGB(255, 0, 175, 173),
-              ],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
-            foregroundColor: Colors.red,
-            side: const BorderSide(),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20),
-            ),
-            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-          ))),
-      home: const MyHomePage(),
+    return GradientButtonThemeData(
+      data: GradientElevatedButton.styleFrom(
+        gradient: const LinearGradient(
+          colors: [Colors.blue, Colors.green],
+          begin: Alignment.centerLeft,
+          end: Alignment.centerRight,
+        ),
+        foregroundColor: Colors.black,
+      ),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Gradient Elevated Button',
+        theme: ThemeData(
+            primarySwatch: Colors.blue,
+            colorScheme: const ColorScheme.light(
+                primary: Color.fromARGB(255, 166, 206, 57),
+                secondary: Color.fromARGB(255, 0, 175, 173)),
+            elevatedButtonTheme: ElevatedButtonThemeData(
+                style: GradientElevatedButton.styleFrom(
+              gradient: const LinearGradient(
+                colors: [
+                  Color.fromARGB(255, 227, 17, 60),
+                  Color.fromARGB(255, 0, 175, 173),
+                ],
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+              ),
+              foregroundColor: Colors.red,
+              side: const BorderSide(),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(20),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+            ))),
+        home: const MyHomePage(),
+      ),
     );
   }
 }

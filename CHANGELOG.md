@@ -1,3 +1,7 @@
+## 0.0.8
+
+* Added GradientButtonThemeData
+
 ## 0.0.7
 
 * Update to latest version
