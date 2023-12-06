@@ -13,14 +13,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Gradient Elevated Button',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+          primarySwatch: Colors.blue,
           colorScheme: const ColorScheme.light(
               primary: Color.fromARGB(255, 166, 206, 57),
-              secondary: Color.fromARGB(255, 0, 175, 173)
-          ),
-
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: GradientElevatedButton.styleFrom(
+              secondary: Color.fromARGB(255, 0, 175, 173)),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+              style: GradientElevatedButton.styleFrom(
             gradient: const LinearGradient(
               colors: [
                 Color.fromARGB(255, 227, 17, 60),
@@ -30,15 +28,12 @@ class MyApp extends StatelessWidget {
               end: Alignment.bottomCenter,
             ),
             foregroundColor: Colors.red,
-              side: const BorderSide(
-              ),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
-          )
-        )
-      ),
+            side: const BorderSide(),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(20),
+            ),
+            padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+          ))),
       home: const MyHomePage(),
     );
   }
@@ -65,7 +60,6 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             GradientElevatedButton(
               onPressed: () {
-
                 // 255, 166, 206, 57
               },
               style: GradientElevatedButton.styleFrom(
@@ -81,9 +75,11 @@ class _MyHomePageState extends State<MyHomePage> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50),
                 ),
-                padding: const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+                padding:
+                    const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
               ),
-              child: const Text("This is Gradient Elevated Button style from UI"),
+              child:
+                  const Text("This is Gradient Elevated Button style from UI"),
             ),
             const SizedBox(
               height: 50,
@@ -92,10 +88,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onPressed: () {},
               child: const Text("This is Gradient Elevated Button From Theme"),
             ),
-
           ],
         ),
-
       ),
     );
   }

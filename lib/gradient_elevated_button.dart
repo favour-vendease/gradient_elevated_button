@@ -124,14 +124,14 @@ class GradientElevatedButton extends style.ButtonStyleButton {
     InteractiveInkFeatureFactory? splashFactory,
     @Deprecated('Use backgroundColor instead. '
         'This feature was deprecated after v3.1.0.')
-        Color? primary,
+    Color? primary,
     @Deprecated('Use foregroundColor instead. '
         'This feature was deprecated after v3.1.0.')
-        Color? onPrimary,
+    Color? onPrimary,
     @Deprecated(
         'Use disabledForegroundColor and disabledBackgroundColor instead. '
         'This feature was deprecated after v3.1.0.')
-        Color? onSurface,
+    Color? onSurface,
   }) {
     /* final Color? background = backgroundColor ?? primary;
     final Color? disabledBackground = disabledBackgroundColor ?? onSurface?.withOpacity(0.12);
@@ -465,7 +465,7 @@ class _ElevatedButtonWithIconChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const double scale =  1;
+    const double scale = 1;
     final double gap =
         scale <= 1 ? 8 : lerpDouble(8, 4, math.min(scale - 1, 1))!;
     return Row(

@@ -291,8 +291,9 @@ class _ButtonStyleState extends State<ButtonStyleButton>
         },
       );
     }
+
     Gradient? resolvedGradient = resolve<Gradient?>(
-            (GradientButtonStyle? style) =>
+        (GradientButtonStyle? style) =>
             MaterialStateProperty.resolveWith((Set<MaterialState> states) {
               return style?.gradient;
             }));
@@ -300,7 +301,6 @@ class _ButtonStyleState extends State<ButtonStyleButton>
         resolve<double?>((ButtonStyle? style) => style?.elevation);
     final TextStyle? resolvedTextStyle =
         resolve<TextStyle?>((ButtonStyle? style) => style?.textStyle);
-
 
     Color? resolvedBackgroundColor =
         resolve<Color?>((ButtonStyle? style) => style?.backgroundColor);
@@ -418,18 +418,19 @@ class _ButtonStyleState extends State<ButtonStyleButton>
     }
     elevation = resolvedElevation;
     backgroundColor = resolvedBackgroundColor;
-    BorderSide side=BorderSide(
-      color: resolvedSide?.color==const Color(0xff000000)?Colors.transparent:resolvedSide?.color??Colors.transparent,
-      style: resolvedSide?.style??BorderStyle.solid,
-      strokeAlign: resolvedSide?.strokeAlign??-1.0,
-      width: resolvedSide?.width??1.0,
+    BorderSide side = BorderSide(
+      color: resolvedSide?.color == const Color(0xff000000)
+          ? Colors.transparent
+          : resolvedSide?.color ?? Colors.transparent,
+      style: resolvedSide?.style ?? BorderStyle.solid,
+      strokeAlign: resolvedSide?.strokeAlign ?? -1.0,
+      width: resolvedSide?.width ?? 1.0,
     );
     final Widget result = Container(
       decoration: BoxDecoration(
           gradient: resolvedGradient,
           borderRadius: (resolvedShape as RoundedRectangleBorder).borderRadius,
-          border: Border.fromBorderSide(side)
-      ),
+          border: Border.fromBorderSide(side)),
       constraints: effectiveConstraints,
       child: Material(
         elevation: resolvedElevation!,
@@ -456,24 +457,22 @@ class _ButtonStyleState extends State<ButtonStyleButton>
           highlightColor: Colors.transparent,
           customBorder: resolvedShape.copyWith(side: side),
           statesController: statesController,
-          child: Builder(
-            builder: (context) {
-              return IconTheme.merge(
-                data: IconThemeData(
-                    color: resolvedIconColor ?? resolvedForegroundColor,
-                    size: resolvedIconSize),
-                child: Padding(
-                  padding: padding,
-                  child: Align(
-                    alignment: resolvedAlignment!,
-                    widthFactor: 1.0,
-                    heightFactor: 1.0,
-                    child: widget.child,
-                  ),
+          child: Builder(builder: (context) {
+            return IconTheme.merge(
+              data: IconThemeData(
+                  color: resolvedIconColor ?? resolvedForegroundColor,
+                  size: resolvedIconSize),
+              child: Padding(
+                padding: padding,
+                child: Align(
+                  alignment: resolvedAlignment!,
+                  widthFactor: 1.0,
+                  heightFactor: 1.0,
+                  child: widget.child,
                 ),
-              );
-            }
-          ),
+              ),
+            );
+          }),
         ),
       ),
     );
