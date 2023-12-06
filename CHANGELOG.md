@@ -1,3 +1,7 @@
+## 0.0.6
+
+* Update to latest version
+
 ## 0.0.5
 
 * When Button Click Splash issue solved
