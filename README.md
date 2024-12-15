@@ -23,7 +23,7 @@ Add the following dependency in your `pubspec.yaml` file:
 
 ```yaml
 dependencies :
-  gradient_elevated_button : ^1.0.3 # Replace with the current version
+  gradient_elevated_button : ^1.0.4 # Replace with the current version
 ```
 then run:
 
