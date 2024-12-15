@@ -15,7 +15,7 @@ A customizable elevated button with gradient support for your Flutter applicatio
 [Demo](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
 
 
-<img src="screen_shot/sample.png" alt="drawing" width="200"/>
+![](screen_shot/sample.png)
 
 ## Installation
 
