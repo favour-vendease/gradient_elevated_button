@@ -1,3 +1,11 @@
+## 1.0.1
+
+* Remove Deprecated Codes
+
+## 1.0.0
+
+* Upgrade to latest Flutter version
+
 ## 0.0.8
 
 * Added GradientButtonThemeData

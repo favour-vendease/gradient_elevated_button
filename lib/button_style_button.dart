@@ -8,6 +8,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:gradient_elevated_button/button_style.dart';
+import 'package:gradient_elevated_button/deprecated/convert_deprecated.dart';
+import 'package:gradient_elevated_button/gradient_elevated_button.dart';
 import 'package:gradient_elevated_button/inherited/gradient_elevated_theme_data.dart';
 
 /// The base [StatefulWidget] class for buttons whose style is defined by a [ButtonStyle] object.
@@ -15,11 +17,7 @@ import 'package:gradient_elevated_button/inherited/gradient_elevated_theme_data.
 /// Concrete subclasses must override [defaultStyleOf] and [themeStyleOf].
 ///
 /// See also:
-///  * [ElevatedButton], a filled button whose material elevates when pressed.
-///  * [FilledButton], a filled button that doesn't elevate when pressed.
-///  * [FilledButton.tonal], a filled button variant that uses a secondary fill color.
-///  * [OutlinedButton], a button with an outlined border and no fill color.
-///  * [TextButton], a button with no outline or fill color.
+///  * [GradientElevatedButton], a filled button whose material elevates when pressed.
 ///  * <https://m3.material.io/components/buttons/overview>, an overview of each of
 ///    the Material Design button types and how they should be used in designs.
 abstract class ButtonStyleButton extends StatefulWidget {
@@ -400,9 +398,10 @@ class _ButtonStyleState extends State<ButtonStyleButton>
         elevation != null &&
         backgroundColor != null &&
         elevation != resolvedElevation &&
-        backgroundColor!.value != resolvedBackgroundColor!.value &&
-        backgroundColor!.opacity == 1 &&
-        resolvedBackgroundColor.opacity < 1 &&
+
+        backgroundColor!.valueDeprecated != resolvedBackgroundColor!.valueDeprecated &&
+        backgroundColor!.opacityDeprecated == 1 &&
+        resolvedBackgroundColor.opacityDeprecated < 1 &&
         resolvedElevation == 0) {
       if (controller?.duration != resolvedAnimationDuration) {
         controller?.dispose();

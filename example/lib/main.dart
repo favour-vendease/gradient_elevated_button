@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
+    /// Setup GradientButtonThemeData for simplify the code
     return GradientButtonThemeData(
       data: GradientElevatedButton.styleFrom(
         gradient: const LinearGradient(
@@ -67,40 +68,75 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            GradientElevatedButton(
-              onPressed: () {
-                // 255, 166, 206, 57
-              },
-              style: GradientElevatedButton.styleFrom(
-                gradient: const LinearGradient(
-                  colors: [
-                    Colors.red,
-                    Colors.green,
-                  ],
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
+
+            const SizedBox(
+              height: 50,
+            ),
+            Sample(
+              title: "USE `GradientElevatedButton.styleFrom`",
+              child: GradientElevatedButton(
+                onPressed: () {
+
+                },
+                style: GradientElevatedButton.styleFrom(
+                  gradient: const LinearGradient(
+                    colors: [
+                      Color(0xFF00B894),
+                      Color(0xFF6C5CE7),
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  foregroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  padding:
+                  const EdgeInsets.symmetric(vertical: 20 , horizontal: 10),
                 ),
-                foregroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(50),
-                ),
-                padding:
-                    const EdgeInsets.symmetric(vertical: 25, horizontal: 25),
+                child: const Text("This is Gradient Elevated Button style from UI"),
               ),
-              child:
-                  const Text("This is Gradient Elevated Button style from UI"),
             ),
             const SizedBox(
               height: 50,
             ),
-            GradientElevatedButton(
-              onPressed: () {},
-              child: const Text("This is Gradient Elevated Button From Theme"),
+            Sample(
+              title: "USE from `GradientButtonThemeData`",
+              child: GradientElevatedButton(
+                onPressed: () {},
+                child: const Text("This is Gradient Elevated Button From Theme"),
+              ),
             ),
+
           ],
         ),
+      ),
+    );
+  }
+}
+
+class Sample extends StatelessWidget {
+  final String title;
+  final Widget child;
+  const Sample({super.key, required this.title, required this.child});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Align(
+            alignment: Alignment.centerLeft,
+            child: Text(title,
+              style: TextTheme.of(context).titleMedium,),
+          ),
+          SizedBox(height: 10,),
+          child,
+        ],
       ),
     );
   }

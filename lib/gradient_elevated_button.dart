@@ -4,11 +4,12 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:gradient_elevated_button/deprecated/convert_deprecated.dart';
 import 'button_style.dart';
 import 'button_style_button.dart' as style;
 
 class GradientElevatedButton extends style.ButtonStyleButton {
-  /// Create an ElevatedButton.
+  /// Create an GradientElevatedButton.
   const GradientElevatedButton({
     super.key,
     required super.onPressed,
@@ -23,7 +24,7 @@ class GradientElevatedButton extends style.ButtonStyleButton {
     required super.child,
   });
 
-  /// Create an elevated button from a pair of widgets that serve as the button's
+  /// Create an gradient elevated button from a pair of widgets that serve as the button's
   /// [icon] and [label].
   ///
   /// The icon and label are arranged in a row and padded by 12 logical pixels
@@ -43,39 +44,40 @@ class GradientElevatedButton extends style.ButtonStyleButton {
     required Widget label,
   }) = _ElevatedButtonWithIcon;
 
-  /// A static convenience method that constructs an elevated button
-  /// [GradientButtonStyle] given simple values.
+  /// A static convenience method that constructs a [GradientButtonStyle]
+  /// for the [GradientElevatedButton] using simple values.
   ///
-  /// The [foregroundColor] and [disabledForegroundColor] colors are used
-  /// to create a [WidgetStateProperty] [GradientButtonStyle.foregroundColor], and
-  /// a derived [GradientButtonStyle.overlayColor].
+  /// This method allows you to customize the appearance of a gradient button,
+  /// including foreground and background colors, elevation, cursor style, and
+  /// the button's response to user interactions such as hover, focus, and press.
   ///
-  /// The [backgroundColor] and [disabledBackgroundColor] colors are
-  /// used to create a [WidgetStateProperty] [GradientButtonStyle.backgroundColor].
+  /// The [foregroundColor] and [disabledForegroundColor] are used to create
+  /// [WidgetStateProperty] for the button's text and icon color, and
+  /// [GradientButtonStyle.overlayColor] is derived from these values.
   ///
-  /// The button's elevations are defined relative to the [elevation]
-  /// parameter. The disabled elevation is the same as the parameter
-  /// value, [elevation] + 2 is used when the button is hovered
-  /// or focused, and elevation + 6 is used when the button is pressed.
+  /// The [backgroundColor] and [disabledBackgroundColor] are used to set
+  /// [WidgetStateProperty] for the button's background color.
   ///
-  /// Similarly, the [enabledMouseCursor] and [disabledMouseCursor]
-  /// parameters are used to construct [GradientButtonStyle].mouseCursor.
+  /// Elevation is managed using the [elevation] parameter. When the button is
+  /// disabled, it has the same elevation as specified by [elevation]. The
+  /// button's elevation increases to [elevation + 2] when hovered or focused,
+  /// and it becomes [elevation + 6] when pressed.
   ///
-  /// All of the other parameters are either used directly or used to
-  /// create a [WidgetStateProperty] with a single value for all
-  /// states.
+  /// Additionally, the [enabledMouseCursor] and [disabledMouseCursor] parameters
+  /// are used to define the [GradientButtonStyle.mouseCursor] for different states.
   ///
-  /// All parameters default to null, by default this method returns
-  /// a [GradientButtonStyle] that doesn't override anything.
+  /// All other parameters are either directly used or applied to create a
+  /// [WidgetStateProperty] with a single value for all states.
   ///
-  /// For example, to override the default text and icon colors for a
-  /// [GradientElevatedButton], as well as its overlay color, with all of the
-  /// standard opacity adjustments for the pressed, focused, and
-  /// hovered states, one could write:
+  /// By default, this method returns a [GradientButtonStyle] that doesn't
+  /// override anything, but you can customize various aspects as needed.
+  ///
+  /// For instance, to change the button's foreground color and overlay color,
+  /// you can use the following code:
   ///
   /// ```dart
-  /// ElevatedButton(
-  ///   style: ElevatedButton.styleFrom(foregroundColor: Colors.green),
+  /// GradientElevatedButton(
+  ///   style: GradientElevatedButton.styleFrom(foregroundColor: Colors.green),
   ///   onPressed: () {
   ///     // ...
   ///   },
@@ -83,18 +85,18 @@ class GradientElevatedButton extends style.ButtonStyleButton {
   /// ),
   /// ```
   ///
-  /// And to change the fill color:
+  /// Similarly, to change the background color:
   ///
   /// ```dart
-  /// ElevatedButton(
-  ///   style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+  /// GradientElevatedButton(
+  ///   style: GradientElevatedButton.styleFrom(backgroundColor: Colors.green),
   ///   onPressed: () {
   ///     // ...
   ///   },
   ///   child: const Text('Meow'),
   /// ),
   /// ```
-  ///
+
   static GradientButtonStyle styleFrom({
     Gradient? gradient,
     Color? foregroundColor,
@@ -131,7 +133,7 @@ class GradientElevatedButton extends style.ButtonStyleButton {
   }) {
     final Color? foreground = foregroundColor ?? onPrimary;
     final Color? disabledForeground =
-        disabledForegroundColor ?? onSurface?.withOpacity(0.38);
+        disabledForegroundColor ?? onSurface?.withOpacityDeprecated(0.38);
     final WidgetStateProperty<Color?>? foregroundColorProp =
         (foreground == null && disabledForeground == null)
             ? null
@@ -170,31 +172,29 @@ class GradientElevatedButton extends style.ButtonStyleButton {
     );
   }
 
-  /// Defines the button's default appearance.
+  /// Defines the default appearance of the [GradientElevatedButton].
   ///
-  /// The button [child]'s [Text] and [Icon] widgets are rendered with
+  /// The button's [child] widgets such as [Text] and [Icon] are rendered with
   /// the [GradientButtonStyle]'s foreground color. The button's [InkWell] adds
-  /// the style's overlay color when the button is focused, hovered
+  /// the style's overlay color when the button is focused, hovered,
   /// or pressed. The button's background color becomes its [Material]
-  /// color.
+  /// color as defined in the style.
   ///
-  /// All of the ButtonStyle's defaults appear below. In this list
-  /// "Theme.foo" is shorthand for `Theme.of(context).foo`. Color
-  /// scheme values like "onSurface(0.38)" are shorthand for
-  /// `onSurface.withOpacity(0.38)`. [WidgetStateProperty] valued
-  /// properties that are not followed by a sublist have the same
-  /// value for all states, otherwise the values are as specified for
-  /// each state, and "others" means all other states.
+  /// The default values for the [GradientButtonStyle] properties are as follows.
+  /// "Theme.foo" is shorthand for `Theme.of(context).foo`, and color scheme
+  /// values like "onSurface(0.38)" are shorthand for `onSurface.withOpacity(0.38)`.
+  /// Properties that are not followed by a sublist have the same value for all states,
+  /// otherwise, the values are as specified for each state, and "others" refers to
+  /// all other states.
   ///
-  /// The `textScaleFactor` is the value of
-  /// `MediaQuery.of(context).textScaleFactor` and the names of the
-  /// EdgeInsets constructors and `EdgeInsetsGeometry.lerp` have been
+  /// The `textScaleFactor` refers to the value of `MediaQuery.of(context).textScaleFactor`.
+  /// The names of the `EdgeInsets` constructors and `EdgeInsetsGeometry.lerp` are
   /// abbreviated for readability.
   ///
-  /// The color of the [ButtonStyle.textStyle] is not used, the
-  /// [ButtonStyle.foregroundColor] color is used instead.
+  /// The color of the [ButtonStyle.textStyle] is not used; instead, the
+  /// [ButtonStyle.foregroundColor] color is used.
   ///
-  /// ## Material 2 defaults
+  /// ## Material 2 Defaults
   ///
   /// * `textStyle` - Theme.textTheme.button
   /// * `backgroundColor`
@@ -232,7 +232,7 @@ class GradientElevatedButton extends style.ButtonStyleButton {
   /// * `alignment` - Alignment.center
   /// * `splashFactory` - InkRipple.splashFactory
   ///
-  /// The default padding values for the [ElevatedButton.icon] factory are slightly different:
+  /// The default padding values for the [GradientElevatedButton.icon] factory are slightly different:
   ///
   /// * `padding`
   ///   * `textScaleFactor <= 1` - start(12) end(16)
@@ -241,13 +241,13 @@ class GradientElevatedButton extends style.ButtonStyleButton {
   ///   * `3 < textScaleFactor` - horizontal(4)
   ///
   /// The default value for `side`, which defines the appearance of the button's
-  /// outline, is null. That means that the outline is defined by the button
-  /// shape's [OutlinedBorder.side]. Typically the default value of an
+  /// outline, is null. This means that the outline is defined by the button
+  /// shape's [OutlinedBorder.side]. Typically, the default value of an
   /// [OutlinedBorder]'s side is [BorderSide.none], so an outline is not drawn.
   ///
-  /// ## Material 3 defaults
+  /// ## Material 3 Defaults
   ///
-  /// If [ThemeData.useMaterial3] is set to true the following defaults will
+  /// If [ThemeData.useMaterial3] is set to true, the following defaults will
   /// be used:
   ///
   /// * `textStyle` - Theme.textTheme.labelLarge
@@ -286,6 +286,7 @@ class GradientElevatedButton extends style.ButtonStyleButton {
   /// * `enableFeedback` - true
   /// * `alignment` - Alignment.center
   /// * `splashFactory` - Theme.splashFactory
+
   @override
   ButtonStyle defaultStyleOf(BuildContext context) {
     final ThemeData theme = Theme.of(context);
@@ -295,8 +296,8 @@ class GradientElevatedButton extends style.ButtonStyleButton {
         ? _ElevatedButtonDefaultsM3(context)
         : styleFrom(
             foregroundColor: colorScheme.onPrimary,
-            disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
-            disabledForegroundColor: colorScheme.onSurface.withOpacity(0.38),
+            disabledBackgroundColor: colorScheme.onSurface.withOpacityDeprecated(0.12),
+            disabledForegroundColor: colorScheme.onSurface.withOpacityDeprecated(0.38),
             shadowColor: theme.shadowColor,
             elevation: 2,
             textStyle: theme.textTheme.labelLarge,
@@ -360,11 +361,11 @@ class _ElevatedButtonDefaultOverlay extends WidgetStateProperty<Color?>
   @override
   Color? resolve(Set<WidgetState> states) {
     if (states.contains(WidgetState.hovered)) {
-      return overlay.withOpacity(0.08);
+      return overlay.withOpacityDeprecated(0.08);
     }
     if (states.contains(WidgetState.focused) ||
         states.contains(WidgetState.pressed)) {
-      return overlay.withOpacity(0.24);
+      return overlay.withOpacityDeprecated(0.24);
     }
     return null;
   }
@@ -466,14 +467,6 @@ class _ElevatedButtonWithIconChild extends StatelessWidget {
   }
 }
 
-// BEGIN GENERATED TOKEN PROPERTIES - ElevatedButton
-
-// Do not edit by hand. The code between the "BEGIN GENERATED" and
-// "END GENERATED" comments are generated from data in the Material
-// Design token database by the script:
-//   dev/tools/gen_defaults/bin/gen_defaults.dart.
-
-// Token database version: v0_143
 
 class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   _ElevatedButtonDefaultsM3(this.context)
@@ -495,7 +488,7 @@ class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   WidgetStateProperty<Color?>? get backgroundColor =>
       WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.disabled)) {
-          return _colors.onSurface.withOpacity(0.12);
+          return _colors.onSurface.withOpacityDeprecated(0.12);
         }
         return _colors.surface;
       });
@@ -504,7 +497,7 @@ class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   WidgetStateProperty<Color?>? get foregroundColor =>
       WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.disabled)) {
-          return _colors.onSurface.withOpacity(0.38);
+          return _colors.onSurface.withOpacityDeprecated(0.38);
         }
         return _colors.primary;
       });
@@ -513,13 +506,13 @@ class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   WidgetStateProperty<Color?>? get overlayColor =>
       WidgetStateProperty.resolveWith((Set<WidgetState> states) {
         if (states.contains(WidgetState.hovered)) {
-          return _colors.primary.withOpacity(0.08);
+          return _colors.primary.withOpacityDeprecated(0.08);
         }
         if (states.contains(WidgetState.focused)) {
-          return _colors.primary.withOpacity(0.12);
+          return _colors.primary.withOpacityDeprecated(0.12);
         }
         if (states.contains(WidgetState.pressed)) {
-          return _colors.primary.withOpacity(0.12);
+          return _colors.primary.withOpacityDeprecated(0.12);
         }
         return null;
       });
