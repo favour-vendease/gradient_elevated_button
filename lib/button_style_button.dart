@@ -398,8 +398,8 @@ class _ButtonStyleState extends State<ButtonStyleButton>
         elevation != null &&
         backgroundColor != null &&
         elevation != resolvedElevation &&
-
-        backgroundColor!.valueDeprecated != resolvedBackgroundColor!.valueDeprecated &&
+        backgroundColor!.valueDeprecated !=
+            resolvedBackgroundColor!.valueDeprecated &&
         backgroundColor!.opacityDeprecated == 1 &&
         resolvedBackgroundColor.opacityDeprecated < 1 &&
         resolvedElevation == 0) {

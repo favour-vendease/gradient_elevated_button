@@ -296,8 +296,10 @@ class GradientElevatedButton extends style.ButtonStyleButton {
         ? _ElevatedButtonDefaultsM3(context)
         : styleFrom(
             foregroundColor: colorScheme.onPrimary,
-            disabledBackgroundColor: colorScheme.onSurface.withOpacityDeprecated(0.12),
-            disabledForegroundColor: colorScheme.onSurface.withOpacityDeprecated(0.38),
+            disabledBackgroundColor:
+                colorScheme.onSurface.withOpacityDeprecated(0.12),
+            disabledForegroundColor:
+                colorScheme.onSurface.withOpacityDeprecated(0.38),
             shadowColor: theme.shadowColor,
             elevation: 2,
             textStyle: theme.textTheme.labelLarge,
@@ -466,7 +468,6 @@ class _ElevatedButtonWithIconChild extends StatelessWidget {
     );
   }
 }
-
 
 class _ElevatedButtonDefaultsM3 extends ButtonStyle {
   _ElevatedButtonDefaultsM3(this.context)

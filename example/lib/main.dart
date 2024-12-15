@@ -70,16 +70,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-
             const SizedBox(
               height: 50,
             ),
             Sample(
               title: "USE `GradientElevatedButton.styleFrom`",
               child: GradientElevatedButton(
-                onPressed: () {
-
-                },
+                onPressed: () {},
                 style: GradientElevatedButton.styleFrom(
                   gradient: const LinearGradient(
                     colors: [
@@ -94,9 +91,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     borderRadius: BorderRadius.circular(20),
                   ),
                   padding:
-                  const EdgeInsets.symmetric(vertical: 20 , horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
                 ),
-                child: const Text("This is Gradient Elevated Button style from UI"),
+                child: const Text(
+                    "This is Gradient Elevated Button style from UI"),
               ),
             ),
             const SizedBox(
@@ -106,10 +104,10 @@ class _MyHomePageState extends State<MyHomePage> {
               title: "USE from `GradientButtonThemeData`",
               child: GradientElevatedButton(
                 onPressed: () {},
-                child: const Text("This is Gradient Elevated Button From Theme"),
+                child:
+                    const Text("This is Gradient Elevated Button From Theme"),
               ),
             ),
-
           ],
         ),
       ),
@@ -131,10 +129,14 @@ class Sample extends StatelessWidget {
         children: [
           Align(
             alignment: Alignment.centerLeft,
-            child: Text(title,
-              style: TextTheme.of(context).titleMedium,),
+            child: Text(
+              title,
+              style: TextTheme.of(context).titleMedium,
+            ),
           ),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           child,
         ],
       ),

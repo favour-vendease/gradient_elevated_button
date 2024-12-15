@@ -15,11 +15,7 @@ class GradientButtonThemeData extends InheritedWidget {
   /// The [data] parameter allows you to pass a [GradientButtonStyle] that will
   /// be used by all [GradientElevatedButton] widgets within this widget's scope.
   /// The [child] parameter is the widget subtree that will inherit this theme.
-  const GradientButtonThemeData({
-    super.key,
-    this.data,
-    required super.child
-  });
+  const GradientButtonThemeData({super.key, this.data, required super.child});
 
   @override
   bool updateShouldNotify(covariant InheritedWidget oldWidget) {

@@ -1,16 +1,14 @@
-
-
 import 'package:flutter/material.dart';
 
-
-extension ColorDeprecatedSolution on Color{
-  int get valueDeprecated{
-   return _floatToInt8(a) << 24 |
-    _floatToInt8(r) << 16 |
-    _floatToInt8(g) << 8 |
-    _floatToInt8(b) << 0;
+extension ColorDeprecatedSolution on Color {
+  int get valueDeprecated {
+    return _floatToInt8(a) << 24 |
+        _floatToInt8(r) << 16 |
+        _floatToInt8(g) << 8 |
+        _floatToInt8(b) << 0;
   }
-  double get opacityDeprecated=> alphaDeprecated / 0xFF;
+
+  double get opacityDeprecated => alphaDeprecated / 0xFF;
   int get alphaDeprecated => (0xff000000 & valueDeprecated) >> 24;
   Color withOpacityDeprecated(double opacity) {
     assert(opacity >= 0.0 && opacity <= 1.0);
