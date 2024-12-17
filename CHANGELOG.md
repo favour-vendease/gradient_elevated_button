@@ -1,3 +1,12 @@
+## 1.0.5
+
+* Updated the code to support the latest Flutter version.
+* Fixed the issue where the disabled button was not functioning correctly.
+* Added a disabled gradient option for the disabled button state.
+* Added a default gradient for the disabled button state.
+* Resolved the issue where the shadow was not appearing.
+
+
 ## 1.0.4
 
 * Remove Deprecated Codes
