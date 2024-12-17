@@ -1,7 +1,10 @@
 
 # GradientElevatedButton
 
-[![pub package](https://img.shields.io/pub/v/like_button.svg)](https://pub.dartlang.org/packages/like_button) [![GitHub license](https://img.shields.io/github/license/fluttercandies/like_button)](https://github.com/fluttercandies/like_button/blob/master/LICENSE) 
+[![pub package](https://img.shields.io/pub/v/gradient_elevated_button)](https://pub.dartlang.org/packages/gradient_elevated_button)
+[![GitHub license](https://img.shields.io/github/license/ChegzDev/gradient_elevated_button
+)](https://github.com/ChegzDev/gradient_elevated_button/blob/master/LICENSE) 
+
 
 A customizable elevated button with gradient support for your Flutter applications. This package allows you to create buttons with gradient backgrounds, custom foreground colors, and various other customizable properties using the `GradientElevatedButton` widget.
 
@@ -12,30 +15,10 @@ A customizable elevated button with gradient support for your Flutter applicatio
 - **Integration with Theme:** Use `GradientButtonThemeData` to apply a consistent style across your app.
 
 
-[Demo](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
+[Demo]
 
 
 ![](screen_shot/sample.png)
-
-## Installation
-
-Add the following dependency in your `pubspec.yaml` file:
-
-```yaml
-dependencies :
-  gradient_elevated_button : ^1.0.5 # Replace with the current version
-```
-then run:
-
-```bash
- flutter pub get
-```
-**OR**
-Alternatively, you can add the package by running the following command in your terminal:
-
-```bash
- flutter pub add gradient_elevated_button
-```
 
 ## Usage
 
@@ -45,7 +28,7 @@ The `GradientButtonThemeData` allows you to define a consistent button style acr
 
 ```dart
     main() {
-      return GradientButtonTheme(
+      return GradientButtonThemeData(
         data: GradientElevatedButton.styleFrom(
           gradient: const LinearGradient(
             colors: [Colors.blue, Colors.green],
@@ -74,30 +57,38 @@ Once you've defined the theme, you can directly use `GradientElevatedButton` wit
 
 Alternatively, you can style the `GradientElevatedButton` directly using `GradientElevatedButton.styleFrom` to define the button's gradient, shape, and other properties:
 
-```dart    
-    Widget gradientWidget = GradientElevatedButton(
-      onPressed: () {
-    
-      },
-      style: GradientElevatedButton.styleFrom(
-        gradient: const LinearGradient(colors: [
-          Color.fromARGB(255, 166, 206, 57),
-          Color.fromARGB(255, 0, 175, 173),
-        ],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
+```dart
+
+Widget gradientWidget = GradientElevatedButton(
+  onPressed: () {
+
+  },
+  style: GradientElevatedButton.styleFrom(
+    gradient: const LinearGradient(colors: [
+      Color.fromARGB(255, 166, 206, 57),
+      Color.fromARGB(255, 0, 175, 173),
+    ],
+      disabledGradient: const LinearGradient(colors: [
+        Colors.grey.withAlpha(200),
+        Colors.grey,
+        Colors.grey.withAlpha(200),
+      ],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
       ),
-      child: const Text("This is Gradient Elevated Button"),
-     );
+    ),
+  ),
+  child: const Text("This is Gradient Elevated Button"),
+);
 ```  
 
 ## Customization
 You can fully customize the GradientElevatedButton using the following properties:
 
-- **gradient**: A `LinearGradient` (or other types) that defines the background gradient.
+- **backgroundGradient**: A `LinearGradient` (or other types) that defines the background gradient.
 - **foregroundColor**: The color of the text and icon on the button.
-- **backgroundColor**: (Optional) A fallback color for the button's background if no gradient is provided.
+- **disabledBackgroundGradient**: A `LinearGradient` (or other types) that defines the disabled background gradient.
+- **disabledForegroundColor**: The color of the text and icon on the disabled button.
 - **padding**: Padding inside the button.
 - **shape**: Define the button’s shape with a `ShapeBorder` like `RoundedRectangleBorder` or `StadiumBorder`.
 - **elevation**: Controls the button's elevation (default: 2).
@@ -105,11 +96,15 @@ You can fully customize the GradientElevatedButton using the following propertie
 
 ## Example
 
-[click here](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart) for example
+[click here] for example
 
 
-## Issues and feedback
+## Issues and Feedback
 
-Please file issues and feedback using the Github issues page for this repository.
+Please file any issues or provide feedback by visiting the [Issues and Feedback] for this repository.
 
-If you have any suggestions or feedback, please send an email to __chegz.dev@gmail.com__ and we'll be happy to hear from you!
+For suggestions or further feedback, feel free to send an email to __chegz.dev@gmail.com__, and we'd be happy to hear from you!
+
+[Issues and Feedback] : (https://github.com/ChegzDev/gradient_elevated_button/issues/new)
+[click here](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
+[Demo](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
