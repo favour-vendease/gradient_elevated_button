@@ -1,4 +1,3 @@
-
 part of '../gradient_elevated_button.dart';
 
 /// The base [StatefulWidget] class for customizable buttons defined by a [GradientButtonStyle] object.
@@ -21,7 +20,6 @@ part of '../gradient_elevated_button.dart';
 /// - [GradientButtonStyle]: The style configuration class for [GradientButtonStyleButton].
 /// - [Material Design Buttons Overview](https://m3.material.io/components/buttons/overview),
 ///   an overview of Material Design button types and their recommended use cases.
-
 
 abstract class GradientButtonStyleButton extends StatefulWidget {
   /// An abstract const constructor. This allows subclasses to define their own
@@ -339,7 +337,8 @@ class _GradientButtonStyleState extends State<GradientButtonStyleButton>
   @override
   Widget build(BuildContext context) {
     final GradientButtonStyle? widgetStyle = widget.style;
-    final GradientButtonStyle? primaryStyle = GradientButtonThemeData.of(context)??widget.themeStyleOf(context);
+    final GradientButtonStyle? primaryStyle =
+        GradientButtonThemeData.of(context) ?? widget.themeStyleOf(context);
     final GradientButtonStyle defaultStyle = widget.defaultStyleOf(context);
     T? effectiveValue<T>(T? Function(GradientButtonStyle? style) getProperty) {
       final T? widgetValue = getProperty(widgetStyle);
@@ -358,6 +357,7 @@ class _GradientButtonStyleState extends State<GradientButtonStyleButton>
         },
       );
     }
+
     final double? resolvedElevation =
         resolve<double?>((GradientButtonStyle? style) => style?.elevation);
     final TextStyle? resolvedTextStyle =
@@ -365,7 +365,8 @@ class _GradientButtonStyleState extends State<GradientButtonStyleButton>
 
     Gradient? resolvedBackgroundGradient = resolve<Gradient?>(
             (GradientButtonStyle? style) => style?.backgroundGradient) ??
-        resolve<Gradient?>((GradientButtonStyle? style) => style?.backgroundGradient);
+        resolve<Gradient?>(
+            (GradientButtonStyle? style) => style?.backgroundGradient);
 
     final Color? resolvedForegroundColor =
         resolve<Color?>((GradientButtonStyle? style) => style?.foregroundColor);
@@ -535,7 +536,8 @@ class _GradientButtonStyleState extends State<GradientButtonStyleButton>
           constraints: effectiveConstraints,
           child: Material(
             elevation: 0,
-            textStyle: resolvedTextStyle?.copyWith(color: resolvedForegroundColor),
+            textStyle:
+                resolvedTextStyle?.copyWith(color: resolvedForegroundColor),
             color: Colors.transparent,
             type: resolvedBackgroundGradient == null
                 ? MaterialType.transparency

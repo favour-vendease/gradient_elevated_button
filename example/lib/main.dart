@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gradient_elevated_button/gradient_elevated_button.dart';
 
-
 void main() {
   runApp(const MyApp());
 }
@@ -11,15 +10,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     // Setup GradientButtonThemeData for simplify the code
     return GradientButtonThemeData(
       data: GradientElevatedButton.styleFrom(
         backgroundGradient: const LinearGradient(
-          colors: [
-            Colors.blue,
-            Colors.green
-          ],
+          colors: [Colors.blue, Colors.green],
           begin: Alignment.centerLeft,
           end: Alignment.centerRight,
         ),
@@ -64,7 +59,8 @@ class _MyHomePageState extends State<MyHomePage> {
               title: "USE from `GradientButtonThemeData`",
               child: GradientElevatedButton(
                 onPressed: () {},
-                child: const Text("This is Gradient Elevated Button From Theme"),
+                child:
+                    const Text("This is Gradient Elevated Button From Theme"),
               ),
             ),
             const SizedBox(
@@ -87,7 +83,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   iconColor: Colors.white,
                   foregroundColor: Colors.white,
                 ),
-                child: const Text("This is GradientElevatedButton using styleFrom"),
+                child: const Text(
+                    "This is GradientElevatedButton using styleFrom"),
               ),
             ),
             const SizedBox(
@@ -124,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: null,
                 style: GradientElevatedButton.styleFrom(
                   shadowColor: Colors.red,
-                  disabledBackgroundGradient:  LinearGradient(
+                  disabledBackgroundGradient: LinearGradient(
                     colors: [
                       Colors.grey.withAlpha(200),
                       Colors.grey,
@@ -136,11 +133,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   iconColor: Colors.white,
                   foregroundColor: Colors.white,
                 ),
-                child: const Text("This is GradientElevatedButton using styleFrom"),
+                child: const Text(
+                    "This is GradientElevatedButton using styleFrom"),
               ),
             ),
-
-
           ],
         ),
       ),

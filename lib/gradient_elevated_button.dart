@@ -9,7 +9,6 @@ import 'dart:math' as math;
 
 import 'package:gradient_elevated_button/src/utils/deprecated_utils.dart';
 
-
 part 'src/gradient_button_style.dart';
 part 'src/gradient_button_style_button.dart';
 part 'src/gradient_elevated_button.dart';

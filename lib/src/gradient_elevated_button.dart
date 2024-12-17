@@ -1,4 +1,5 @@
 part of '../gradient_elevated_button.dart';
+
 /// A custom Material Design "gradient elevated button".
 ///
 /// Use gradient elevated buttons to enhance visual appeal in
@@ -157,18 +158,14 @@ class GradientElevatedButton extends GradientButtonStyleButton {
   ///
   static GradientButtonStyle styleFrom({
     Color? foregroundColor,
-    @Deprecated(
-        'Use [backgroundGradient] instead. '
-            'This feature was deprecated after v1.0.5'
-    )
+    @Deprecated('Use [backgroundGradient] instead. '
+        'This feature was deprecated after v1.0.5')
     Gradient? gradient,
     Gradient? backgroundGradient,
     Color? disabledForegroundColor,
     Gradient? disabledBackgroundGradient,
-    @Deprecated(
-        'Use `disabledBackgroundGradient` instead. '
-            'This feature was deprecated after v1.0.5'
-    )
+    @Deprecated('Use `disabledBackgroundGradient` instead. '
+        'This feature was deprecated after v1.0.5')
     Color? disabledBackgroundColor,
     Color? shadowColor,
     Color? surfaceTintColor,
@@ -195,16 +192,19 @@ class GradientElevatedButton extends GradientButtonStyleButton {
     // ButtonLayerBuilder? backgroundBuilder,
     // ButtonLayerBuilder? foregroundBuilder,
   }) {
-    final WidgetStateProperty<Color?>? overlayColorProp = switch ((foregroundColor, overlayColor)) {
+    final WidgetStateProperty<Color?>? overlayColorProp =
+        switch ((foregroundColor, overlayColor)) {
       (null, null) => null,
       (_, Color(a: 0.0)) => WidgetStatePropertyAll<Color?>(overlayColor),
-      (_, final Color color) || (final Color color, _) => WidgetStateProperty<Color?>.fromMap(
-        <WidgetState, Color?>{
-          WidgetState.pressed: color.withOpacityDeprecated(0.1),
-          WidgetState.hovered: color.withOpacityDeprecated(0.08),
-          WidgetState.focused: color.withOpacityDeprecated(0.1),
-        },
-      ),
+      (_, final Color color) ||
+      (final Color color, _) =>
+        WidgetStateProperty<Color?>.fromMap(
+          <WidgetState, Color?>{
+            WidgetState.pressed: color.withOpacityDeprecated(0.1),
+            WidgetState.hovered: color.withOpacityDeprecated(0.08),
+            WidgetState.focused: color.withOpacityDeprecated(0.1),
+          },
+        ),
     };
 
     WidgetStateProperty<double>? elevationValue;
@@ -215,21 +215,26 @@ class GradientElevatedButton extends GradientButtonStyleButton {
           WidgetState.pressed: elevation + 6,
           WidgetState.hovered: elevation + 4,
           WidgetState.focused: elevation + 4,
-          WidgetState.any:     elevation,
+          WidgetState.any: elevation,
         },
       );
     }
 
     return GradientButtonStyle(
       textStyle: WidgetStatePropertyAll<TextStyle?>(textStyle),
-      backgroundGradient: GradientButtonStyleButton.defaultGradient(backgroundGradient??gradient, disabledBackgroundGradient),
-      gradient: GradientButtonStyleButton.defaultGradient(backgroundGradient??gradient, disabledBackgroundGradient),
+      backgroundGradient: GradientButtonStyleButton.defaultGradient(
+          backgroundGradient ?? gradient, disabledBackgroundGradient),
+      gradient: GradientButtonStyleButton.defaultGradient(
+          backgroundGradient ?? gradient, disabledBackgroundGradient),
       // backgroundColor: GradientButtonStyleButton.defaultColor(backgroundColor, disabledBackgroundColor),
-      foregroundColor: GradientButtonStyleButton.defaultColor(foregroundColor, disabledForegroundColor),
+      foregroundColor: GradientButtonStyleButton.defaultColor(
+          foregroundColor, disabledForegroundColor),
       overlayColor: overlayColorProp,
       shadowColor: GradientButtonStyleButton.allOrNull<Color>(shadowColor),
-      surfaceTintColor: GradientButtonStyleButton.allOrNull<Color>(surfaceTintColor),
-      iconColor: GradientButtonStyleButton.defaultColor(iconColor, disabledIconColor),
+      surfaceTintColor:
+          GradientButtonStyleButton.allOrNull<Color>(surfaceTintColor),
+      iconColor:
+          GradientButtonStyleButton.defaultColor(iconColor, disabledIconColor),
       iconSize: GradientButtonStyleButton.allOrNull<double>(iconSize),
       elevation: elevationValue,
       padding: GradientButtonStyleButton.allOrNull<EdgeInsetsGeometry>(padding),
@@ -385,29 +390,32 @@ class GradientElevatedButton extends GradientButtonStyleButton {
     return Theme.of(context).useMaterial3
         ? _GradientElevatedButtonDefaultsM3(context)
         : styleFrom(
-      backgroundGradient: _basicGradient(colorScheme),
-      disabledBackgroundGradient: _basicDisabledGradient(colorScheme),
-      // backgroundColor: colorScheme.primary,
-      foregroundColor: colorScheme.onPrimary,
-      // disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
-      disabledIconColor: colorScheme.onSurface.withOpacityDeprecated(0.38),
-      disabledForegroundColor: colorScheme.onSurface.withOpacityDeprecated(0.38),
-      shadowColor: theme.shadowColor,
-      elevation: 2,
-      textStyle: theme.textTheme.labelLarge,
-      padding: _scaledPadding(context),
-      minimumSize: const Size(64, 36),
-      maximumSize: Size.infinite,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(4))),
-      enabledMouseCursor: SystemMouseCursors.click,
-      disabledMouseCursor: SystemMouseCursors.basic,
-      visualDensity: theme.visualDensity,
-      tapTargetSize: theme.materialTapTargetSize,
-      animationDuration: kThemeChangeDuration,
-      enableFeedback: true,
-      alignment: Alignment.center,
-      splashFactory: InkRipple.splashFactory,
-    );
+            backgroundGradient: _basicGradient(colorScheme),
+            disabledBackgroundGradient: _basicDisabledGradient(colorScheme),
+            // backgroundColor: colorScheme.primary,
+            foregroundColor: colorScheme.onPrimary,
+            // disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+            disabledIconColor:
+                colorScheme.onSurface.withOpacityDeprecated(0.38),
+            disabledForegroundColor:
+                colorScheme.onSurface.withOpacityDeprecated(0.38),
+            shadowColor: theme.shadowColor,
+            elevation: 2,
+            textStyle: theme.textTheme.labelLarge,
+            padding: _scaledPadding(context),
+            minimumSize: const Size(64, 36),
+            maximumSize: Size.infinite,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(4))),
+            enabledMouseCursor: SystemMouseCursors.click,
+            disabledMouseCursor: SystemMouseCursors.basic,
+            visualDensity: theme.visualDensity,
+            tapTargetSize: theme.materialTapTargetSize,
+            animationDuration: kThemeChangeDuration,
+            enableFeedback: true,
+            alignment: Alignment.center,
+            splashFactory: InkRipple.splashFactory,
+          );
   }
 
   /// Returns the [GradientElevatedButtonThemeData.style] of the closest
@@ -422,7 +430,8 @@ EdgeInsetsGeometry _scaledPadding(BuildContext context) {
   final ThemeData theme = Theme.of(context);
   final double padding1x = theme.useMaterial3 ? 24.0 : 16.0;
   final double defaultFontSize = theme.textTheme.labelLarge?.fontSize ?? 14.0;
-  final double effectiveTextScale = MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0;
+  final double effectiveTextScale =
+      MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0;
 
   return GradientButtonStyleButton.scaledPadding(
     EdgeInsets.symmetric(horizontal: padding1x),
@@ -448,34 +457,37 @@ class _GradientElevatedButtonWithIcon extends GradientElevatedButton {
     required Widget label,
     super.iconAlignment,
   }) : super(
-    autofocus: autofocus ?? false,
-    child: _GradientElevatedButtonWithIconChild(
-      icon: icon,
-      label: label,
-      buttonStyle: style,
-      iconAlignment: iconAlignment,
-    ),
-  );
+          autofocus: autofocus ?? false,
+          child: _GradientElevatedButtonWithIconChild(
+            icon: icon,
+            label: label,
+            buttonStyle: style,
+            iconAlignment: iconAlignment,
+          ),
+        );
 
   @override
   GradientButtonStyle defaultStyleOf(BuildContext context) {
     final bool useMaterial3 = Theme.of(context).useMaterial3;
     final GradientButtonStyle buttonStyle = super.defaultStyleOf(context);
-    final double defaultFontSize = buttonStyle.textStyle?.resolve(const <WidgetState>{})?.fontSize ?? 14.0;
-    final double effectiveTextScale = MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0;
+    final double defaultFontSize =
+        buttonStyle.textStyle?.resolve(const <WidgetState>{})?.fontSize ?? 14.0;
+    final double effectiveTextScale =
+        MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0;
 
     final EdgeInsetsGeometry scaledPadding = useMaterial3
-        ?  GradientButtonStyleButton.scaledPadding(
-      const EdgeInsetsDirectional.fromSTEB(16, 0, 24, 0),
-      const EdgeInsetsDirectional.fromSTEB(8, 0, 12, 0),
-      const EdgeInsetsDirectional.fromSTEB(4, 0, 6, 0),
-      effectiveTextScale,
-    ) : GradientButtonStyleButton.scaledPadding(
-      const EdgeInsetsDirectional.fromSTEB(12, 0, 16, 0),
-      const EdgeInsets.symmetric(horizontal: 8),
-      const EdgeInsetsDirectional.fromSTEB(8, 0, 4, 0),
-      effectiveTextScale,
-    );
+        ? GradientButtonStyleButton.scaledPadding(
+            const EdgeInsetsDirectional.fromSTEB(16, 0, 24, 0),
+            const EdgeInsetsDirectional.fromSTEB(8, 0, 12, 0),
+            const EdgeInsetsDirectional.fromSTEB(4, 0, 6, 0),
+            effectiveTextScale,
+          )
+        : GradientButtonStyleButton.scaledPadding(
+            const EdgeInsetsDirectional.fromSTEB(12, 0, 16, 0),
+            const EdgeInsets.symmetric(horizontal: 8),
+            const EdgeInsetsDirectional.fromSTEB(8, 0, 4, 0),
+            effectiveTextScale,
+          );
     return buttonStyle.copyWith(
       padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
     );
@@ -497,8 +509,14 @@ class _GradientElevatedButtonWithIconChild extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double defaultFontSize = buttonStyle?.textStyle?.resolve(const <WidgetState>{})?.fontSize ?? 14.0;
-    final double scale = clampDouble(MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0, 1.0, 2.0) - 1.0;
+    final double defaultFontSize =
+        buttonStyle?.textStyle?.resolve(const <WidgetState>{})?.fontSize ??
+            14.0;
+    final double scale = clampDouble(
+            MediaQuery.textScalerOf(context).scale(defaultFontSize) / 14.0,
+            1.0,
+            2.0) -
+        1.0;
     final double gap = lerpDouble(8, 4, scale)!;
     return Row(
       mainAxisSize: MainAxisSize.min,
@@ -519,17 +537,18 @@ class _GradientElevatedButtonWithIconChild extends StatelessWidget {
 class _GradientElevatedButtonDefaultsM3 extends GradientButtonStyle {
   _GradientElevatedButtonDefaultsM3(this.context)
       : super(
-    animationDuration: kThemeChangeDuration,
-    enableFeedback: true,
-    alignment: Alignment.center,
-  );
+          animationDuration: kThemeChangeDuration,
+          enableFeedback: true,
+          alignment: Alignment.center,
+        );
 
   final BuildContext context;
   late final ColorScheme _colors = Theme.of(context).colorScheme;
 
   @override
   WidgetStateProperty<TextStyle?> get textStyle =>
-      WidgetStatePropertyAll<TextStyle?>(Theme.of(context).textTheme.labelLarge);
+      WidgetStatePropertyAll<TextStyle?>(
+          Theme.of(context).textTheme.labelLarge);
 
   @override
   WidgetStateProperty<Gradient?>? get backgroundGradient =>
@@ -648,29 +667,33 @@ class _GradientElevatedButtonDefaultsM3 extends GradientButtonStyle {
   }
 
   @override
-  MaterialTapTargetSize? get tapTargetSize => Theme.of(context).materialTapTargetSize;
+  MaterialTapTargetSize? get tapTargetSize =>
+      Theme.of(context).materialTapTargetSize;
 
   @override
-  InteractiveInkFeatureFactory? get splashFactory => Theme.of(context).splashFactory;
+  InteractiveInkFeatureFactory? get splashFactory =>
+      Theme.of(context).splashFactory;
 }
 
-
-Gradient _basicGradient(ColorScheme colorScheme){
+Gradient _basicGradient(ColorScheme colorScheme) {
   return LinearGradient(
     colors: [colorScheme.primary, colorScheme.secondary],
     begin: Alignment.centerLeft,
     end: Alignment.centerRight,
   );
 }
-Gradient _basicDisabledGradient(ColorScheme colorScheme){
+
+Gradient _basicDisabledGradient(ColorScheme colorScheme) {
   return LinearGradient(
     colors: [
       colorScheme.onSurface.withOpacityDeprecated(0.1),
       colorScheme.onSurface.withOpacityDeprecated(0.2),
-      colorScheme.onSurface.withOpacityDeprecated(0.1)],
+      colorScheme.onSurface.withOpacityDeprecated(0.1)
+    ],
   );
 }
-Gradient _gradientFromColor(Color color){
+
+Gradient _gradientFromColor(Color color) {
   return LinearGradient(
     colors: [color, color.withOpacityDeprecated(0.6)], // Example gradient
     begin: Alignment.topLeft,

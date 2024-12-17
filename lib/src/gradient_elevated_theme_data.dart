@@ -1,4 +1,5 @@
 part of '../gradient_elevated_button.dart';
+
 /// A widget that provides a way to define a global style for [GradientElevatedButton]
 /// widgets within the widget tree.
 ///
@@ -36,7 +37,6 @@ class GradientButtonThemeData extends InheritedWidget {
   }
 }
 
-
 class GradientButtonTheme extends InheritedTheme {
   /// Create a [ElevatedButtonTheme].
   const GradientButtonTheme({
@@ -59,11 +59,12 @@ class GradientButtonTheme extends InheritedTheme {
   /// ElevatedButtonThemeData theme = ElevatedButtonTheme.of(context);
   /// ```
   static GradientElevatedButtonThemeData? of(BuildContext context) {
-    final GradientButtonTheme? buttonTheme = context.dependOnInheritedWidgetOfExactType<GradientButtonTheme>();
-    return buttonTheme?.data??GradientElevatedButtonThemeData(style: GradientButtonStyle.fromElevatedButtonStyle(
-    Theme.of(context).elevatedButtonTheme.style
-    ) ) ;
-
+    final GradientButtonTheme? buttonTheme =
+        context.dependOnInheritedWidgetOfExactType<GradientButtonTheme>();
+    return buttonTheme?.data ??
+        GradientElevatedButtonThemeData(
+            style: GradientButtonStyle.fromElevatedButtonStyle(
+                Theme.of(context).elevatedButtonTheme.style));
   }
 
   @override
@@ -72,7 +73,8 @@ class GradientButtonTheme extends InheritedTheme {
   }
 
   @override
-  bool updateShouldNotify(ElevatedButtonTheme oldWidget) => data.style != oldWidget.data.style;
+  bool updateShouldNotify(ElevatedButtonTheme oldWidget) =>
+      data.style != oldWidget.data.style;
 }
 
 @immutable
@@ -80,7 +82,7 @@ class GradientElevatedButtonThemeData with Diagnosticable {
   /// Creates an [GradientElevatedButtonThemeData].
   ///
   /// The [style] may be null.
-  const GradientElevatedButtonThemeData({ this.style });
+  const GradientElevatedButtonThemeData({this.style});
 
   /// Overrides for [ElevatedButton]'s default style.
   ///
@@ -92,7 +94,10 @@ class GradientElevatedButtonThemeData with Diagnosticable {
   final GradientButtonStyle? style;
 
   /// Linearly interpolate between two elevated button themes.
-  static GradientElevatedButtonThemeData? lerp(GradientElevatedButtonThemeData? a, GradientElevatedButtonThemeData? b, double t) {
+  static GradientElevatedButtonThemeData? lerp(
+      GradientElevatedButtonThemeData? a,
+      GradientElevatedButtonThemeData? b,
+      double t) {
     if (identical(a, b)) {
       return a;
     }
@@ -118,6 +123,7 @@ class GradientElevatedButtonThemeData with Diagnosticable {
   @override
   void debugFillProperties(DiagnosticPropertiesBuilder properties) {
     super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
+    properties.add(
+        DiagnosticsProperty<ButtonStyle>('style', style, defaultValue: null));
   }
 }
