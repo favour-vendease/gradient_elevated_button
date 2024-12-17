@@ -15,7 +15,7 @@ A customizable elevated button with gradient support for your Flutter applicatio
 - **Integration with Theme:** Use `GradientButtonThemeData` to apply a consistent style across your app.
 
 
-[Demo]
+[Demo](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
 
 
 ![](screen_shot/sample.png)
@@ -96,15 +96,15 @@ You can fully customize the GradientElevatedButton using the following propertie
 
 ## Example
 
-[click here] for example
+[click here](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart) for example
 
 
 ## Issues and Feedback
 
-Please file any issues or provide feedback by visiting the [Issues and Feedback] for this repository.
+Please file any issues or provide feedback by visiting the [Issues and Feedback](https://github.com/ChegzDev/gradient_elevated_button/issues/new) for this repository.
 
 For suggestions or further feedback, feel free to send an email to __chegz.dev@gmail.com__, and we'd be happy to hear from you!
 
-[Issues and Feedback] : (https://github.com/ChegzDev/gradient_elevated_button/issues/new)
-[click here](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
-[Demo](https://github.com/ChegzDev/gradient_elevated_button/blob/master/example/lib/main.dart)
+
+
+
