@@ -1,4 +1,4 @@
-## 1.0.5
+## 1.0.6
 
 * Updated the code to support the latest Flutter version.
 * Fixed the issue where the disabled button was not functioning correctly.
