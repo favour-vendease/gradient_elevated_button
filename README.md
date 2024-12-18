@@ -2,7 +2,7 @@
 # GradientElevatedButton
 
 [![pub package](https://img.shields.io/pub/v/gradient_elevated_button)](https://pub.dartlang.org/packages/gradient_elevated_button)
-[![pub publisher]([https://img.shields.io/pub/v/gradient_elevated_button](https://img.shields.io/pub/publisher/gradient_elevated_button
+[![pub_publisher]([https://img.shields.io/pub/v/gradient_elevated_button](https://img.shields.io/pub/publisher/gradient_elevated_button
 ))](https://pub.dartlang.org/packages/gradient_elevated_button)
 [![GitHub license](https://img.shields.io/github/license/ChegzDev/gradient_elevated_button
 )](https://github.com/ChegzDev/gradient_elevated_button/blob/master/LICENSE) 
