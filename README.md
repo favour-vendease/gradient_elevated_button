@@ -1,10 +1,38 @@
 
 # GradientElevatedButton
 
-[![pub package](https://img.shields.io/pub/v/gradient_elevated_button)](https://pub.dartlang.org/packages/gradient_elevated_button)
-[![pub package](https://img.shields.io/pub/publisher/gradient_elevated_button)](https://pub.dartlang.org/packages/gradient_elevated_button)
-[![GitHub license](https://img.shields.io/github/license/ChegzDev/gradient_elevated_button
-)](https://github.com/ChegzDev/gradient_elevated_button/blob/master/LICENSE) 
+[![Package Version](https://img.shields.io/pub/v/gradient_elevated_button)](https://pub.dartlang.org/packages/gradient_elevated_button)
+[![License](https://img.shields.io/github/license/ChegzDev/gradient_elevated_button)](https://github.com/ChegzDev/gradient_elevated_button/blob/master/LICENSE)
+[![Likes](https://img.shields.io/pub/likes/gradient_elevated_button)](https://pub.dev/packages/gradient_elevated_button/score)
+[![Points](https://img.shields.io/pub/points/gradient_elevated_button)](https://pub.dev/packages/gradient_elevated_button/score)
+[![Popularity](https://img.shields.io/pub/popularity/gradient_elevated_button)](https://pub.dev/packages/gradient_elevated_button/score)
+
+[//]: # ([![Publisher]&#40;https://img.shields.io/pub/publisher/gradient_elevated_button&#41;]&#40;fsd&#41;)
+
+
+![Git Issues](https://img.shields.io/github/issues/ChegzDev/gradient_elevated_button?style=flat&logo=github)
+
+[//]: # (![Git Last Commit]&#40;https://img.shields.io/github/last-commit/ChegzDev/gradient_elevated_button?style=flat&#41;)
+[//]: # ([![Git Stars]&#40;https://img.shields.io/github/stars/ChegzDev?style=flat&logo=github&#41;]&#40;fsd&#41;)
+[//]: # ([![Git Followers]&#40;https://img.shields.io/github/followers/ChegzDev?style=flat&logo=github&#41;]&#40;fsd&#41;)
+[//]: # ([![Languages]&#40;https://img.shields.io/github/languages/top/ChegzDev/gradient_elevated_button?style=flat&logo=dart&#41;]&#40;fsd&#41;)
+[//]: # (![Git Contributors]&#40;https://img.shields.io/github/contributors/ChegzDev/gradient_elevated_button?style=flat&#41;)
+
+
+
+[//]: # (![Team Chegz Dev]&#40;https://img.shields.io/badge/Team-Chegz%20Dev-blue?style=flat&logo=teams&logoColor=white&#41;)
+[//]: # (![Flutter Developer]&#40;https://img.shields.io/badge/Flutter_Developer-blue?style=flat&logo=flutter&logoColor=white&#41;)
+[//]: # (![Dart Developer]&#40;https://img.shields.io/badge/Dart_Developer-0175C2?style=flat&logo=dart&logoColor=white&#41;)
+
+[//]: # (![Docs]&#40;https://img.shields.io/badge/Documentation-Available-brightgreen?style=flat&#41;)
+
+
+
+[![Buy Me a Coffee](https://img.buymeacoffee.com/button-api/?text=Buy%20me%20a%20coffee&emoji=&slug=chegz_dev&button_colour=FFDD00&font_colour=000000&font_family=Arial&outline_colour=000000&coffee_colour=ffffff)](https://www.buymeacoffee.com/chegz_dev)
+
+
+
+
 
 
 A customizable elevated button with gradient support for your Flutter applications. This package allows you to create buttons with gradient backgrounds, custom foreground colors, and various other customizable properties using the `GradientElevatedButton` widget.
