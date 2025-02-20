@@ -490,7 +490,7 @@ class _GradientElevatedButtonWithIcon extends GradientElevatedButton {
           );
     return buttonStyle.copyWith(
       padding: WidgetStatePropertyAll<EdgeInsetsGeometry>(scaledPadding),
-    );
+    ) as GradientButtonStyle;
   }
 }
 

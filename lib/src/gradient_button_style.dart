@@ -34,13 +34,14 @@ class GradientButtonStyle extends ButtonStyle {
   });
 
   @override
-  GradientButtonStyle copyWith({
+  ButtonStyle copyWith({
     WidgetStateProperty<TextStyle?>? textStyle,
     WidgetStateProperty<Gradient?>? backgroundGradient,
     @Deprecated('Use `backgroundGradient` instead. '
         'This feature was deprecated after v1.0.5')
     WidgetStateProperty<Gradient?>? gradient,
     WidgetStateProperty<Color?>? backgroundColor,
+    IconAlignment? iconAlignment,
     WidgetStateProperty<Color?>? foregroundColor,
     WidgetStateProperty<Color?>? overlayColor,
     WidgetStateProperty<Color?>? shadowColor,
